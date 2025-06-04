@@ -1,0 +1,63 @@
+MATCH (b:book) WHERE b.title = "Existentialism Is a Humanism" SET b.year = 1946 return b;
+
+MATCH (b:book) WHERE b.title = "Existentialism Is a Humanism" return b;
+
+MATCH p=()-[]->() RETURN p LIMIT 25;
+
+MATCH p=()-[:WROTE]->() RETURN p LIMIT 25;
+
+MATCH (t:book {title: "Being and Time"}) MATCH (n:book {title: "Being and Nothingness"}) MERGE (t)-[i:INFLUENCED]->(n) RETURN t, n, i;
+
+MATCH p=()-[:WROTE]->() RETURN p LIMIT 25;
+
+MERGE (a:author {name: "Martin Heidegger"}) MERGE (b:book {title: "Being and Time", year: 1927}) MERGE (a)-[w:WROTE]->(b) RETURN b, a, w;
+
+MATCH (a:author {name: "Jean-Paul Sartre"}) MERGE (b:book {title: "No Exit", year: 1944}) MERGE (a)-[w:WROTE]->(b) RETURN b, a, w;
+
+MATCH p=()-[]->() RETURN p LIMIT 25;
+
+MATCH (n) RETURN n LIMIT 25;
+
+MATCH (a:author {name: "Jean-Paul Sartre"}) MERGE (b:book {title: "Nausea", year: 1938}) MERGE (a)-[w:WROTE]->(b) RETURN b, a, w;
+
+MERGE (a:author {name: "Jean-Paul Sartre"}) MERGE (b:book {title: "Existentialism Is a Humanism"}) MERGE (a)-[w:WROTE]->(b) RETURN b, a, w;
+
+MATCH (a:author {name: "Jean-Paul Sartre"}) MATCH (b:book {title: "Being and Nothingness"}) MERGE (a)-[w:WROTE]->(b) RETURN a, b, w;
+
+MERGE (a:author {name: "Jean-Paul Sartre"}) MERGE (b:book {title: "Existentialism Is a Humanism"}) MERGE (a)-[w:WROTE]->(b) RETURN b, a, w;
+
+MATCH (a:author {name: "Jean-Paul Sartre"}) MERGE (b:book {title: "Existentialism Is a Humanism"}) MERGE (a)-[w:WROTE]->(b) RETURN b, a, w;
+
+MATCH (a:author {name: "Jean-Paul Sartre"})-[w:WROTE]->(b:book) DELETE w DELETE a;
+
+MATCH (a:author {name: "Jean-Paul Sartre"}) MERGE (b:book {title: "Existentialism Is a Humanism"}) MERGE (a)-[w:WROTE]->(b) RETURN b, a, w;
+
+MATCH (n:author) RETURN n LIMIT 25;
+
+MATCH (n:author)-[w:WROTE]-(b:book) RETURN n, b, w LIMIT 25;
+
+MERGE (b:book {title: "Existentialism Is a Humanism"}) MERGE (a:author {name: "Jean-Paul Sartre"})-[w:WROTE]->(b) RETURN b, a, w;
+
+MATCH (n:author)-[w:WROTE]-(b:book) RETURN n, b, w LIMIT 25;
+
+MATCH (n:author)-[w:WROTE]-(b:book) RETURN n, b LIMIT 25;
+
+MATCH (n:author)-[w:WROTE]-(b:book) RETURN n LIMIT 25;
+
+MATCH (n:author)--(b:book) RETURN n LIMIT 25;
+
+MATCH (n:author) RETURN n LIMIT 25;
+
+MATCH (n:book) RETURN n LIMIT 25;
+
+MERGE (b:book {title: "Being and Nothingness"}) MERGE (a:author {name: "Jean-Paul Sartre"}) MERGE (a)-[w:WROTE {year: 1943}]->(b) RETURN a, b, w;
+
+MERGE (b:book {title: "Being and Nothingness"}) MERGE (a:author {name: "Jean-Paul Sartre"}) MERGE (a)-[w:WROTE {year: 1943}]->(b) RETURN a, b;
+
+MERGE (b:book {title: "Being and Nothingness"}) MERGE (a:author {name: "Jean-Paul Sartre"}) MERGE (a)-[w:WROTE]->(b) RETURN a, b;
+
+MERGE (b:book {title: "Being and Nothingness"}) MERGE (a:author {name: "Jean-Paul Sartre"}) RETURN a, b;
+
+MERGE (b:book {title: "Being and Nothingness"}) SET b.author = "Jean-Paul Sartre" RETURN b;
+
+MATCH (n) RETURN n LIMIT 25;
